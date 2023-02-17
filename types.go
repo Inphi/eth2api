@@ -416,3 +416,15 @@ func (m *ErrorMessage) IndexedErrors() []IndexedErrorMessageItem {
 type IndexedError interface {
 	IndexedErrors() []IndexedErrorMessageItem
 }
+
+type Blob struct {
+	Data []byte `json:"data"`
+}
+
+// TODO: Update once https://github.com/ethereum/beacon-APIs/pull/286 is merged
+type BlobsSidecar struct {
+	BeaconBlockRoot []byte `json:"beacon_block_root"`
+	BeaconBlockSlot uint64 `json:"beacon_block_slot"`
+	Blobs           []Blob `json:"blobs"`
+	AggregatedProof []byte `json:"aggregated_proof"`
+}
